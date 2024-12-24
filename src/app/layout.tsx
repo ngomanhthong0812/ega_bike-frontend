@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import NextTopLoader from 'nextjs-toploader';
+import { Bounce, ToastContainer } from 'react-toastify';
+
 import '@/app/globals.css';
+import UserHeader from "@/components/layout/user.header";
+import UserFooter from "@/components/layout/user.footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +23,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <UserHeader />
+        <NextTopLoader />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce}
+        />
         {children}
+        <UserFooter />
       </body>
     </html>
 
