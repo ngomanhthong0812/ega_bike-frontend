@@ -1,35 +1,30 @@
-'use client'
-
 import Link from "next/link";
-import { useState } from "react";
+import React from "react";
 
 import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 
-
-const ProductCard = () => {
-    const [imageSrc, setImageSrc] = useState('https://bizweb.dktcdn.net/thumb/grande/100/521/820/products/2-3-4a49ba5f8a06422d9bbd84ec7d4f3a8c-large.jpg?v=1721810485640')
-
-    // Hàm xử lý khi di chuột vào
-    const handleMouseEnter = () => {
-        setImageSrc('https://bizweb.dktcdn.net/thumb/grande/100/521/820/products/11-3-d30ef3382f6444c7a7d333bb0a0152fc-large.jpg?v=1721810923400');
-    };
-
-    // Hàm xử lý khi di chuột ra
-    const handleMouseLeave = () => {
-        setImageSrc('https://bizweb.dktcdn.net/thumb/grande/100/521/820/products/2-3-4a49ba5f8a06422d9bbd84ec7d4f3a8c-large.jpg?v=1721810485640');
-    };
-
+interface IProps {
+    isQuantitySold?: boolean,
+}
+const ProductCard: React.FC<IProps> = ({ isQuantitySold = true }) => {
     return (
         <div>
             <div
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                className="relative group p-1 product-card_img truncate">
+                className="relative group p-1 product-card_img truncate w-full min-h-[300px]">
                 <Link href={"#"}>
-                    <img src={imageSrc} alt="image" />
+                    <img
+                        className="absolute top-0 left-0 w-full h-full transition-transform duration-300 ease-linear opacity-100 group-hover:opacity-0 group-hover:scale-95"
+                        src="https://bizweb.dktcdn.net/thumb/grande/100/521/820/products/2-3-4a49ba5f8a06422d9bbd84ec7d4f3a8c-large.jpg?v=1721810485640"
+                        alt="primary image"
+                    />
+                    <img
+                        className="absolute top-0 left-0 w-full h-full transition-transform duration-300 ease-linear opacity-0 group-hover:opacity-100 group-hover:scale-90"
+                        src="https://bizweb.dktcdn.net/thumb/grande/100/521/820/products/11-3-d30ef3382f6444c7a7d333bb0a0152fc-large.jpg?v=1721810923400"
+                        alt="hover image"
+                    />
                 </Link>
                 <div className="option absolute bottom-5 left-1/2 -translate-x-1/2 translate-y-[70px] flex shadow-md shadow-[#e6e6e6] bg-white rounded-md duration-300 group-hover:translate-y-0">
                     <span className="add-cart p-4 border-r border-[#f4f4f4] hover:bg-[#f4f4f4] cursor-pointer rounded-l-md duration-150">
@@ -77,12 +72,15 @@ const ProductCard = () => {
                             className="w-[25px]" />
                     </div>
                 </div>
-                <div className="mt-2">
-                    <p className="text-[14px]">Vừa mở bán</p>
-                    <div className="relative bg-[#e9ecef] h-[5px] rounded-md mt-1">
-                        <p className="absolute top-0 left-0 w-[10%] h-full bg-[#d62626] rounded-md"></p>
+                {isQuantitySold
+                    &&
+                    <div className="mt-2">
+                        <p className="text-[14px]">Vừa mở bán</p>
+                        <div className="relative bg-[#e9ecef] h-[5px] rounded-md mt-1">
+                            <p className="absolute top-0 left-0 w-[10%] h-full bg-[#d62626] rounded-md"></p>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
     )

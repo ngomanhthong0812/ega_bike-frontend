@@ -2,7 +2,7 @@ import Link from "next/link"
 
 const ProductCategories = () => {
     return (
-        <div className="pt-24">
+        <div className="py-24">
             <h1 className="uppercase flex justify-center text-[28px] font-[600] pb-5">Danh sách sản phẩm</h1>
             <div className="grid grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6">
                 <Link href={"#"} className="item-center flex-col px-4 gap-2 product-categories_item">

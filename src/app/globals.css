@@ -224,3 +224,38 @@ body {
 }
 
 /* product card */
+
+/* product overview */
+  @keyframes borderEffect {
+   0% {
+        box-shadow: 0 0 0 0 rgba(232, 232, 232, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 10px 5px rgba(235, 235, 235, 0.7); /* Màu sáng hơn một chút */
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(232, 232, 232, 0.2); /* Màu nhạt dần */
+      }
+    }
+
+
+    .btn-border-effect {
+      transition: all 0.3s ease;
+    }
+
+    .btn-border-effect {
+      animation: borderEffect 1s infinite;
+    }
+    .btn-border-effect span{
+      box-shadow: 0 0 8px rgb(182, 182, 182);
+    }
+/* product overview */
+
+
+/* product slick */
+.slick-next::before,
+.slick-prev::before{
+  color: black !important;
+  font-size: 25px !important;
+}
+/* product slick */

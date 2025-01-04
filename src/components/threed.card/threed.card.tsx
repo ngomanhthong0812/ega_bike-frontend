@@ -1,25 +1,20 @@
+import React from 'react';
 import styles from './threed.card.module.css';
-
-const ThreedCard = () => {
+import Link from 'next/link';
+interface IProps {
+    data: { main: string, hover: string }
+}
+const ThreedCard: React.FC<IProps> = ({ data }) => {
     return (
-        <div className={styles['container-card']}>
-            <div className={styles['threed-card-container']}>
-                <div className={styles['threed-card']}>
-                    <img
-                        src="https://bizweb.dktcdn.net/100/521/820/themes/957130/assets/banner_coll_1_2_hover.png?1726653723228"
-                        alt=""
-                        className="w-[80%]"
-                    />
+        <Link href={"#"} className='mb-10'>
+            <div className={`${styles['container']}`}>
+                <div id="card" className={`${styles['card']}`}>
+                    <img src={data.main} alt="banner" className={`${styles['card__image']}`} />
                 </div>
+                <div className={`${styles['line']}`}></div>
+                <img src={data.hover} alt="banner" className={`${styles['card__image_hover']}`} />
             </div>
-            <div className={styles['img-truncate']}>
-                <img
-                    src="https://bizweb.dktcdn.net/100/521/820/themes/957130/assets/banner_coll_1_2_hover.png?1726653723228"
-                    alt=""
-                    className="w-full h-full object-cover"
-                />
-            </div>
-        </div>
+        </Link>
     )
 }
 
