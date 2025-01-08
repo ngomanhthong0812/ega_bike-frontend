@@ -255,7 +255,42 @@ body {
 /* product slick */
 .slick-next::before,
 .slick-prev::before{
-  color: black !important;
+  color: rgb(162, 162, 162) !important;
   font-size: 25px !important;
 }
 /* product slick */
+
+/* product detail */
+.discount-product-detail-item{
+  position: relative;
+  overflow: hidden;
+  padding: 5px 0px;
+  font-weight: 500;
+}
+.discount-product-detail-item span{
+  border: 1px solid #000000;
+  padding: 5px 9px;
+  border-radius: 5px;
+  z-index: -1;
+}
+
+.discount-product-detail-item::before,
+.discount-product-detail-item::after{
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #000000;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgb(255, 255, 255);
+  z-index: 1;
+}
+.discount-product-detail-item::before{
+  left: -4px;
+}
+.discount-product-detail-item::after{
+  right: -4px;
+}
+/* product detail */

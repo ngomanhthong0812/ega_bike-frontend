@@ -3,7 +3,7 @@ import Link from "next/link"
 import Coupons from "@/components/coupon/coupons"
 import ProductList from "@/components/product/product.list"
 import Filter from "./components/filter"
-import ProductSwipper from "@/components/product/product.list.slider"
+import ProductSlider from "@/components/product/product.list.slider"
 import PaginationGlobal from "@/components/pagination.global"
 
 const Products = () => {
@@ -32,7 +32,7 @@ const Products = () => {
     return (
         <div className="layout-container">
             <div className="flex gap-1 mt-3">
-                <Link href={"/"} className="font-[400]">Trang chủ</Link>
+                <Link href={"/"} className="font-[400] hover:text-blue-700 duration-100">Trang chủ</Link>
                 <span className="font-[500]">/</span>
                 <span className="font-[600]">Electric bikes</span>
             </div>
@@ -58,7 +58,7 @@ const Products = () => {
                     </div>
                 </div>
                 {/* <PaginationGlobal page={1} totalPage={5} setPage={() => { }} /> */}
-                <ProductSwipper isButton={false} title="Sản phẩm đã xem" />
+                <ProductSlider isButton={false} title="Sản phẩm đã xem" />
             </main>
         </div>
     )

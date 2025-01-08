@@ -5,6 +5,9 @@ import NextTopLoader from 'nextjs-toploader';
 import { Bounce, ToastContainer } from 'react-toastify';
 
 import '@/app/globals.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import UserHeader from "@/components/layout/user.header";
 import UserFooter from "@/components/layout/user.footer";
 

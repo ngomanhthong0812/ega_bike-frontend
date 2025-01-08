@@ -4,9 +4,6 @@ import ProductCard from "./product.card"
 import ButtonSeeMore from "../button/button.see.more";
 import Slider from "react-slick";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 interface IProps {
     title?: string,
     isButton?: boolean,
@@ -18,7 +15,7 @@ const ProductSlider: React.FC<IProps> = ({ title, isButton = true }) => {
         infinite: true,
         speed: 500,
         slidesToShow: 5,
-        slidesToScroll: 1,
+        slidesToScroll: 2,
     };
     return (
         <div className="pt-14">
