@@ -1,8 +1,24 @@
+"use client"
+import { useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa"
 import { GrNext } from "react-icons/gr";
 import { IoAddSharp, IoRemoveSharp } from "react-icons/io5";
+import { DiscountsSheet } from "../../../../components/discounts.sheet";
+import { AddToCardSuccessModal } from "./modals/add_to_card_success.modal";
 
 const ProductInfo = () => {
+    const [openDiscounts, setOpenDiscounts] = useState(false);
+    const [openAddToCardSuccess, setOpenAddToCardSuccess] = useState(false);
+    const [count, setCount] = useState(1);
+
+    const handleDecrement = () => {
+        if (count > 1) {
+            setCount(count - 1);
+        }
+    }
+    const handleIncrement = () => {
+        setCount(count + 1);
+    }
     return (
         <div className="col-span-2">
             <h1 className="font-[600] text-[25px]">Túi khô XTOURING - Xám sắt tổ ong Túi khô XTOURING</h1>
@@ -38,32 +54,35 @@ const ProductInfo = () => {
                     <li className="flex gap-3"><span>•</span> Đổi trả trong 30 ngày nếu sản phẩm lỗi bất kì</li>
                 </ul>
             </div>
-            <div className="dicount-product-detail cursor-pointer mt-4">
+            <div className="dicount-product-detail mt-4">
                 <h3 className="font-[600] text-[16px]">Mã giảm giá</h3>
-                <div className="flex items-center gap-2 text-[14px] uppercase mt-[7px]">
+                <div className="flex items-center gap-2 text-[14px] uppercase mt-[7px] cursor-pointer" onClick={() => setOpenDiscounts(true)}>
                     <div className="discount-product-detail-item"><span>summer5</span></div>
                     <div className="discount-product-detail-item"><span>summer5</span></div>
                     <div className="discount-product-detail-item"><span>summer5</span></div>
                     <div className="discount-product-detail-item"><span>summer5</span></div>
                     <GrNext size={17} />
                 </div>
+                <DiscountsSheet open={openDiscounts} setOpen={setOpenDiscounts} />
             </div>
             <div className="mt-7 flex flex-col gap-4">
                 <div className="flex items-center gap-4">
                     <div className="flex items-center border">
-                        <button className="py-3 px-4"><IoRemoveSharp size={20} /></button>
-                        <span className="py-3 px-4">1</span>
-                        <button className="py-3 px-4"><IoAddSharp size={20} /></button>
+                        <button className="py-[9px] px-4" onClick={handleDecrement}><IoRemoveSharp size={20} /></button>
+                        <p className="py-[9px] w-[40px] text-center">{count}</p>
+                        <button className="py-[9px] px-4" onClick={handleIncrement}><IoAddSharp size={20} /></button>
                     </div>
                     <button
-                        className="border py-[11px] flex-1 border-black text-black font-[600] 
-                    uppercase text-[17px] hover:bg-[#282828] hover:text-white hover:shadow-md shadow-black duration-300 ">
+                        className="border py-[9px] flex-1 border-black text-black font-[600] 
+                    uppercase text-[15px] hover:bg-[#282828] hover:text-white hover:shadow-sm hover:shadow-[#6d6d6d] duration-300 "
+                        onClick={() => setOpenAddToCardSuccess(true)}>
                         Thêm vào giỏ
                     </button>
+                    <AddToCardSuccessModal open={openAddToCardSuccess} setOpen={setOpenAddToCardSuccess} />
                 </div>
                 <button
-                    className="border py-[11px] border-black font-[600] 
-                    uppercase text-[17px] bg-[#282828] text-white hover:shadow-md shadow-black duration-300 ">
+                    className="border py-[9px] border-black font-[600] 
+                    uppercase text-[15px] bg-[#282828] text-white hover:shadow-sm hover:shadow-[#6d6d6d] duration-300 ">
                     Mua ngay
                 </button>
             </div>

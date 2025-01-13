@@ -5,6 +5,8 @@ import ProductInfo from "./components/product.info";
 import Link from "next/link";
 import ProductBenefits from "./components/product.benefits";
 import ProductSlider from "@/components/product/product.list.slider";
+import DescriptionTabs from "./components/description.tabs";
+import FeedbackForm from "./components/feedback.form";
 
 const ProductDetail = () => {
     const params = useParams();
@@ -17,11 +19,13 @@ const ProductDetail = () => {
                 <span className="font-[500]">/</span>
                 <span className="font-[600]">Túi khô XTOURING - Xám sắt tổ ong Túi khô XTOURING</span>
             </div>
-            <div className="grid grid-cols-5 gap-6 mt-8">
+            <div className="grid grid-cols-5 gap-6 mt-8  sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5">
                 <ProductImages />
                 <ProductInfo />
                 <ProductBenefits />
             </div>
+            <DescriptionTabs />
+            <FeedbackForm />
             <ProductSlider isButton={false} title="Sản phẩm cùng loại" />
             <ProductSlider isButton={false} title="Sản phẩm đã xem" />
         </div>

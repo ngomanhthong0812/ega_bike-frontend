@@ -1,7 +1,11 @@
+import React from "react";
 import CouponCard from "./coupon.card";
-const Coupons = () => {
+interface IProps {
+    col?: number;
+}
+const Coupons: React.FC<IProps> = ({ col = 4 }) => {
     return (
-        <div className="grid grid-cols-4 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4">
+        <div className={`grid grid-cols-${col} gap-5 sm:grid-cols-${col - 2} md:grid-cols-${col - 1} lg:grid-cols-${col} xl:grid-cols-${col} 2xl:grid-cols-${col}`}>
             <CouponCard />
             <CouponCard />
             <CouponCard />

@@ -13,15 +13,15 @@ const ProductCard: React.FC<IProps> = ({ isQuantitySold = true }) => {
     return (
         <div>
             <div
-                className="relative group p-1 product-card_img truncate w-full min-h-[300px]">
+                className="relative group p-1 product-card_img truncate w-full aspect-square">
                 <Link href={"#"}>
                     <img
-                        className="absolute top-0 left-0 w-full h-full transition-transform duration-300 ease-linear opacity-100 group-hover:opacity-0 group-hover:scale-95"
+                        className="absolute top-0 left-0 object-cover w-full h-full transition-transform duration-300 ease-linear opacity-100 group-hover:opacity-0 group-hover:scale-95"
                         src="https://bizweb.dktcdn.net/thumb/grande/100/521/820/products/2-3-4a49ba5f8a06422d9bbd84ec7d4f3a8c-large.jpg?v=1721810485640"
                         alt="primary image"
                     />
                     <img
-                        className="absolute top-0 left-0 w-full h-full transition-transform duration-300 ease-linear opacity-0 group-hover:opacity-100 group-hover:scale-90"
+                        className="absolute top-0 left-0 object-cover w-full h-full transition-transform duration-300 ease-linear opacity-0 group-hover:opacity-100 group-hover:scale-90"
                         src="https://bizweb.dktcdn.net/thumb/grande/100/521/820/products/11-3-d30ef3382f6444c7a7d333bb0a0152fc-large.jpg?v=1721810923400"
                         alt="hover image"
                     />
