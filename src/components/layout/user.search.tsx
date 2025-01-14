@@ -9,6 +9,7 @@ import { AiOutlineUser } from "react-icons/ai"
 import { LuShoppingCart } from "react-icons/lu"
 import { DialogTitle } from "@radix-ui/react-dialog"
 import Link from "next/link"
+import Image from "next/image"
 
 interface IProps {
     open: boolean
@@ -21,7 +22,7 @@ export function UserSearch({ open, setOpen }: IProps) {
                 <DialogTitle></DialogTitle>
                 <div className="mx-auto w-full max-w-[1210px]">
                     <div className="px-4 pt-10 pb-28 flex justify-between items-center gap-5">
-                        <img src="/logo.webp" alt="" className="w-[180px]" />
+                        <Image src="/logo.webp" alt="" width={100000} height={100000} className="w-[180px] h-auto" />
                         <div className="flex-1 flex flex-col items-center">
                             <div className="relative">
                                 <input type="text" className="w-[650px] py-3 pl-3 pr-10 outline-none rounded-full border border-black text-sm"

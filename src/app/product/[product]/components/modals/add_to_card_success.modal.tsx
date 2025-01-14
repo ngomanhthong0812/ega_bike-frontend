@@ -5,6 +5,7 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog"
+import Image from "next/image";
 import Link from "next/link";
 
 import { FaCheckCircle } from "react-icons/fa";
@@ -23,8 +24,7 @@ export function AddToCardSuccessModal({ open, setOpen }: IProps) {
                 </DialogHeader>
                 <div className="px-5">
                     <div className="flex gap-5 border-b">
-                        <img src="https://bizweb.dktcdn.net/thumb/small/100/521/820/products/11-1-1a1526617dea4d76a4008602b4f267ae.jpg" alt=""
-                            className="w-16" />
+                        <Image width={64} height={100} src="https://bizweb.dktcdn.net/thumb/small/100/521/820/products/11-1-1a1526617dea4d76a4008602b4f267ae.jpg" alt="" />
                         <p>Xe đạp đường trường Ultegra (x2)</p>
                     </div>
                     <div className="flex py-3 justify-between gap-5 border-b">

@@ -6,6 +6,7 @@ import { Navigation, Thumbs, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+import Image from "next/image";
 
 function ProductImages() {
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
@@ -32,7 +33,7 @@ function ProductImages() {
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={index}>
-                        <img src={image} className="w-full h-full object-cover" />
+                        <Image src={image} alt="" className="w-full h-full object-cover" width={480} height={480} />
                     </SwiperSlide>
                 ))}
             </Swiper>
@@ -50,7 +51,7 @@ function ProductImages() {
                         key={index}
                         className={`!w-[83px] !h-[83px] border p-1 rounded-md ${activeIndex === index ? 'border-primary' : 'border-transparent'}`}
                     >
-                        <img src={image} className="w-full h-full object-cover rounded-sm" />
+                        <Image src={image} alt="" className="w-full h-full object-cover rounded-sm" width={100000} height={100000} />
                     </SwiperSlide>
                 ))}
             </Swiper>

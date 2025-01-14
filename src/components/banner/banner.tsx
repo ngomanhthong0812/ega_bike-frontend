@@ -10,6 +10,7 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { EffectFade, Navigation, Pagination } from 'swiper/modules';
+import Image from 'next/image';
 
 const Banner = () => {
     return (
@@ -25,10 +26,10 @@ const Banner = () => {
                 className="mySwiper w-full"
             >
                 <SwiperSlide>
-                    <img className="w-full h-full object-cover" src="/slider_1.jpg" />
+                    <Image className="w-full h-full object-cover" src="/slider_1.jpg" alt="" width={100000} height={100000} />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className="w-full h-full object-cover" src="/slider_2.jpg" />
+                    <Image className="w-full h-full object-cover" src="/slider_2.jpg" alt="" width={100000} height={100000} />
                 </SwiperSlide>
             </Swiper>
         </>

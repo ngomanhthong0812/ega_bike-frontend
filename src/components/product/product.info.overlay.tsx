@@ -1,4 +1,5 @@
 import { v4 } from "uuid"
+import Image from "next/image"
 import ButtonSeeMore from "../button/button.see.more"
 
 const ProductInfoOverlay = () => {
@@ -30,7 +31,7 @@ const ProductInfoOverlay = () => {
             <div className="grid grid-cols-3 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3">
                 {productInfoOverlayList.map(item => (
                     <div key={item.id} className="flex-1">
-                        <img src={item.imgUrl} alt="" className="w-full h-[494px] mb-7" />
+                        <Image src={item.imgUrl} alt="" width={100000} height={100000} className="w-full h-[494px] mb-7" />
                         <div className="flex justify-center"><h3 className="text-[23px] mb-1">{item.title}</h3></div>
                         <ButtonSeeMore title="Xem chi tiết" url={item.link} />
                     </div>

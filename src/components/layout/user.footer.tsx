@@ -2,13 +2,14 @@ import { HiMapPin } from "react-icons/hi2";
 import { MdPhoneIphone } from "react-icons/md";
 import { HiOutlineMail } from "react-icons/hi";
 import Link from "next/link";
+import Image from "next/image";
 
 const UserFooter = () => {
     return (
         <div className="bg-footer py-14">
             <div className="layout-container text-white flex gap-10 text-[15px] sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row">
                 <div className="w-[23%] flex flex-col gap-3 sm:w-full md:w-full lg:w-[23%] xl:w-[23%] 2xl:w-[23%]">
-                    <img src="/logo-footer.webp" alt="" className="w-[180px]" />
+                    <Image src="/logo-footer.webp" alt="" width={100000} height={100000} className="w-[180px] h-auto" />
                     <h1 className="text-2xl mt-1">Cửa hàng xe đạp EGA</h1>
                     <p>Cửa hàng uy tín và chất lượng, cam kết mang đến những trải nghiệm mua sắm tiện lợi và hiện đại</p>
                     <p>Mã số thuế: 12345678999</p>
@@ -54,26 +55,26 @@ const UserFooter = () => {
                                 </div>
                                 <ul className="flex items-center gap-5 mt-2">
                                     <li>
-                                        <Link href={'#'}><img src="/facebook.webp" alt="" className="w-[33px]" /></Link>
+                                        <Link href={'#'}><Image src="/facebook.webp" alt="" width={100000} height={100000} className="w-[33px] h-auto" /></Link>
                                     </li>
                                     <li>
-                                        <Link href={'#'}><img src="/zalo.webp" alt="" className="w-[33px]" /></Link>
+                                        <Link href={'#'}><Image src="/zalo.webp" alt="" width={100000} height={100000} className="w-[33px] h-auto" /></Link>
                                     </li>
                                     <li>
-                                        <Link href={'#'}><img src="/instagram.webp" alt="" className="w-[33px]" /></Link>
+                                        <Link href={'#'}><Image src="/instagram.webp" alt="" width={100000} height={100000} className="w-[33px] h-auto" /></Link>
                                     </li>
                                     <li>
-                                        <Link href={'#'}><img src="/youtube.webp" alt="" className="w-[33px]" /></Link>
+                                        <Link href={'#'}><Image src="/youtube.webp" alt="" width={100000} height={100000} className="w-[33px] h-auto" /></Link>
                                     </li>
                                     <li>
-                                        <Link href={'#'}><img src="/tiktok.webp" alt="" className="w-[33px]" /></Link>
+                                        <Link href={'#'}><Image src="/tiktok.webp" alt="" width={100000} height={100000} className="w-[33px] h-auto" /></Link>
                                     </li>
                                 </ul>
                             </ul>
                         </div>
                     </div>
                     <div className="flex-1 py-10 flex justify-center">
-                        <Link href={'#'}><img src="/footer_trustbadge.webp" alt="" className="w-[260px]" /></Link>
+                        <Link href={'#'}><Image src="/footer_trustbadge.webp" alt="" width={100000} height={100000} className="w-[260px] h-auto" /></Link>
                     </div>
                 </div>
             </div>

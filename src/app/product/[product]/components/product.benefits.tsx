@@ -2,6 +2,8 @@ import { LiaShippingFastSolid } from "react-icons/lia";
 import { CiCoinInsert } from "react-icons/ci";
 import { MdOutlinePayment } from "react-icons/md";
 import Link from "next/link";
+import Image from "next/image";
+import { Fullscreen } from "lucide-react";
 
 const ProductBenefits = () => {
     const benefits = [
@@ -28,7 +30,9 @@ const ProductBenefits = () => {
                     </div>
                 ))}
             </div>
-            <Link href="/"><img src="/Ảnh Xe đạp Màu trắng Sở thích Đồ họa Blog.png" alt="" className="object-cover rounded-md" /></Link>
+            <Link href="/"><Image src="/Ảnh Xe đạp Màu trắng Sở thích Đồ họa Blog.png" alt="" className="w-full h-auto object-cover rounded-md"
+                width={100000} height={100000}
+            /></Link>
         </div>
     )
 }

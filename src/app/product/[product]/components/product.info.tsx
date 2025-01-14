@@ -5,6 +5,7 @@ import { GrNext } from "react-icons/gr";
 import { IoAddSharp, IoRemoveSharp } from "react-icons/io5";
 import { DiscountsSheet } from "../../../../components/discounts.sheet";
 import { AddToCardSuccessModal } from "./modals/add_to_card_success.modal";
+import Image from "next/image";
 
 const ProductInfo = () => {
     const [openDiscounts, setOpenDiscounts] = useState(false);
@@ -45,7 +46,7 @@ const ProductInfo = () => {
             </div>
             <div className="endow relative mt-8">
                 <h3 className="flex gap-2 items-center font-[600] text-[15px] text-black uppercase bg-white absolute -top-1 left-4 px-2 -translate-y-1/2">
-                    <img src="/icon-product-promotion.webp" alt="" />
+                    <Image width={10000} height={10000} src="/icon-product-promotion.webp" alt="" className="w-[20px] h-[20px]" />
                     Khuyến mãi - Ưu đãi
                 </h3>
                 <ul className="flex flex-col gap-1 text-[15px] border-2 border-dashed border-black rounded-sm p-5">

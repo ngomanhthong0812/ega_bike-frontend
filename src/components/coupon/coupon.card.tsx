@@ -1,10 +1,11 @@
+import Image from "next/image"
 import { MdOutlineInfo } from "react-icons/md"
 
 const CouponCard = () => {
     return (
         <div className="flex">
             <div className="coupon-card_left bg-white p-[6px] pl-[13px] rounded-r-2xl rounded-l-lg item-center">
-                <img src="/coupon_1_img.webp" alt="" className="w-[40px]" />
+                <Image src="/coupon_1_img.webp" alt="" width={100000} height={100000} className="w-[40px] h-auto" />
             </div>
             <div className="coupon-card_right bg-white text-[13px] text-[#999] p-2 pb-3 rounded-2xl">
                 <div className="flex justify-between gap-3">

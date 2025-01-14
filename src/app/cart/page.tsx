@@ -1,12 +1,17 @@
 "use client"
-import ProductSlider from "@/components/product/product.list.slider";
 import Link from "next/link";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 
 import { IoAddSharp, IoRemoveSharp, IoCloseOutline } from "react-icons/io5";
 import { GrFormNext } from "react-icons/gr";
 import { BiSolidDiscount } from "react-icons/bi";
-import { DiscountsSheet } from "@/components/discounts.sheet";
+import Image from "next/image";
+
+const ProductSlider = dynamic(() => import("@/components/product/product.list.slider").then(mod => mod.default));
+const DiscountsSheet = dynamic(() => import("@/components/discounts.sheet").then(mod => mod.DiscountsSheet), {
+    ssr: false
+});
 
 const Cart = () => {
     const [openDiscounts, setOpenDiscounts] = useState(false);
@@ -27,7 +32,7 @@ const Cart = () => {
                 <Link href={"/"} className="font-[400] hover:text-blue-700 duration-100">Trang chủ</Link>
                 <span className="font-[500]">/</span>
                 <span className="font-[600]">Giỏ hàng</span>
-            </div>
+            </div>  
             <div className="mt-8">
                 <h1 className="text-[30px] font-[600]">Giỏ hàng</h1>
                 <div className="grid grid-cols-3">
@@ -43,8 +48,10 @@ const Cart = () => {
                             <div className="flex gap-2 items-center justify-between text-[15px]">
                                 <div className="flex items-center gap-2">
                                     <button><IoCloseOutline size={20} /></button>
-                                    <img
-                                        className="w-[100px] h-[100px] object-cover"
+                                    <Image
+                                        width={100}
+                                        height={100}
+                                        className="object-cover"
                                         src="https://bizweb.dktcdn.net/thumb/compact/100/521/820/products/wohoxtouringdrybag6-1296x-0f6eb4af893443d4b233f19bb40c6c1e.jpg" alt="" />
                                     <Link href={"#"} className="hover:text-blue-700 duration-100">Túi khô XTOURING - Xám sắt tổ ong Túi khô XTOURING</Link>
                                 </div>
@@ -60,8 +67,10 @@ const Cart = () => {
                             <div className="flex gap-2 items-center justify-between text-[15px]">
                                 <div className="flex items-center gap-2">
                                     <button><IoCloseOutline size={20} /></button>
-                                    <img
-                                        className="w-[100px] h-[100px] object-cover"
+                                    <Image
+                                        width={100}
+                                        height={100}
+                                        className="object-cover"
                                         src="https://bizweb.dktcdn.net/thumb/compact/100/521/820/products/wohoxtouringdrybag6-1296x-0f6eb4af893443d4b233f19bb40c6c1e.jpg" alt="" />
                                     <Link href={"#"} className="hover:text-blue-700 duration-100">Túi khô XTOURING - Xám sắt tổ ong Túi khô XTOURING</Link>
                                 </div>
@@ -115,7 +124,7 @@ const Cart = () => {
                                 Thanh toán
                             </button>
                             <div className="flex-1 mt-4 flex justify-center">
-                                <Link href={'#'}><img src="/footer_trustbadge.webp" alt="" className="w-[260px]" /></Link>
+                                <Link href={'#'}><Image src="/footer_trustbadge.webp" alt="" width={260} height={50} /></Link>
                             </div>
                         </div>
                     </div>

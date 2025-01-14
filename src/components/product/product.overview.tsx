@@ -3,6 +3,7 @@ import { IoAdd } from "react-icons/io5";
 
 import ButtonSeeMore from "../button/button.see.more"
 import { useState } from "react";
+import Image from "next/image";
 
 const ProductOverview = () => {
     const [info, setInfo] = useState([
@@ -30,7 +31,7 @@ const ProductOverview = () => {
     return (
         <div className="pt-24 flex gap-20 sm:block md:block lg:flex xl:flex 2xl:flex">
             <div className="relative w-[62%] sm:w-full md:w-full lg:w-[60%]  xl:w-[60%] 2xl:w-[60%]">
-                <img src="/lookbook_oneproduct_img.webp" alt="" />
+                <Image src="/lookbook_oneproduct_img.webp" alt="" width={100000} height={100000} className="w-full h-auto" />
                 <button
                     onClick={() => setActive(0)}
                     className="btn-border-effect absolute item-center top-64 left-36 bg-white rounded-full w-[32px] h-[32px]">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import ProductCard from "./product.card"
 import ButtonSeeMore from "../button/button.see.more";
 
@@ -8,7 +9,7 @@ const ProductDiscountList = () => {
             <div className="flex items-center justify-between">
                 <Link href={'#'} className="uppercase flex text-[28px] font-[600] pb-5 gap-2 hover:text-[#ec720e] duration-100">
                     Happy Summer - Giảm đến 50%
-                    <img src="/flashsale-hot.webp" alt="" className="w-[30px] h-[30px]" />
+                    <Image src="/flashsale-hot.webp" alt="" width={100000} height={100000} className="w-[30px] h-[30px]" />
                 </Link>
                 <div className="flex items-center gap-2">
                     <p>Kết thúc sau</p>
