@@ -37,7 +37,7 @@ export function AddToCardSuccessModal({ open, setOpen }: IProps) {
                 </div>
                 <DialogFooter className="p-3 px-5">
                     <Link href="/" className="px-3 py-2 text-center flex-1 rounded-none bg-transparent border border-black hover:bg-[#282828] hover:text-white duration-300 ">Thanh toán</Link>
-                    <Link href="/" className="px-3 py-2 text-center flex-1 rounded-none bg-[#282828] text-white hover:shadow-md hover:shadow-[#6d6d6d] duration-300">Xem giỏ hàng</Link>
+                    <Link href="/cart" className="px-3 py-2 text-center flex-1 rounded-none bg-[#282828] text-white hover:shadow-md hover:shadow-[#6d6d6d] duration-300">Xem giỏ hàng</Link>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

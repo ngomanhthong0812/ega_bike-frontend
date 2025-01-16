@@ -30,6 +30,7 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -57,10 +58,12 @@
     --chart-5: 340 75% 55%;
   }
 }
+
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -125,6 +128,29 @@ body {
 .menu-item:hover::before {
   width: 100%;
   background-color: var(--primary-color);
+}
+
+.account-menu-popup::after {
+  position: absolute;
+  content: "";
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background-color: #363636;
+  z-index: -1;
+}
+
+.account-menu-popup {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.account:hover .account-menu-popup {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* menu */
@@ -290,48 +316,56 @@ body {
 /* product card */
 
 /* product overview */
-  @keyframes borderEffect {
-   0% {
-        box-shadow: 0 0 0 0 rgba(232, 232, 232, 0.4);
-      }
-      50% {
-        box-shadow: 0 0 10px 5px rgba(235, 235, 235, 0.7); /* Màu sáng hơn một chút */
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(232, 232, 232, 0.2); /* Màu nhạt dần */
-      }
-    }
+@keyframes borderEffect {
+  0% {
+    box-shadow: 0 0 0 0 rgba(232, 232, 232, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 10px 5px rgba(235, 235, 235, 0.7);
+    /* Màu sáng hơn một chút */
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(232, 232, 232, 0.2);
+    /* Màu nhạt dần */
+  }
+}
 
 
-    .btn-border-effect {
-      transition: all 0.3s ease;
-    }
+.btn-border-effect {
+  transition: all 0.3s ease;
+}
 
-    .btn-border-effect {
-      animation: borderEffect 1s infinite;
-    }
-    .btn-border-effect span{
-      box-shadow: 0 0 8px rgb(182, 182, 182);
-    }
+.btn-border-effect {
+  animation: borderEffect 1s infinite;
+}
+
+.btn-border-effect span {
+  box-shadow: 0 0 8px rgb(182, 182, 182);
+}
+
 /* product overview */
 
 
 /* product slick */
 .slick-next::before,
-.slick-prev::before{
+.slick-prev::before {
   color: rgb(162, 162, 162) !important;
   font-size: 25px !important;
 }
+
 /* product slick */
 
 /* product detail */
-.discount-product-detail-item{
+.discount-product-detail-item {
   position: relative;
   overflow: hidden;
   padding: 5px 0px;
   font-weight: 500;
 }
-.discount-product-detail-item span{
+
+.discount-product-detail-item span {
   border: 1px solid #000000;
   padding: 5px 9px;
   border-radius: 5px;
@@ -339,7 +373,7 @@ body {
 }
 
 .discount-product-detail-item::before,
-.discount-product-detail-item::after{
+.discount-product-detail-item::after {
   position: absolute;
   content: "";
   width: 10px;
@@ -351,20 +385,24 @@ body {
   background-color: rgb(255, 255, 255);
   z-index: 1;
 }
-.discount-product-detail-item::before{
+
+.discount-product-detail-item::before {
   left: -4px;
 }
-.discount-product-detail-item::after{
+
+.discount-product-detail-item::after {
   right: -4px;
 }
+
 /* product detail */
 
 /* description tabs */
-.description-tabs_item{
+.description-tabs_item {
   position: relative;
   padding: 3px 0px;
 }
-.description-tabs_item::before{
+
+.description-tabs_item::before {
   position: absolute;
   content: "";
   bottom: 0;
@@ -374,9 +412,10 @@ body {
   transition: all 0.3s;
   background-color: #000000;
 }
-.description-tabs_item.active::before{
-  background-color:var(--primary-color);
+
+.description-tabs_item.active::before {
+  background-color: var(--primary-color);
   width: 100%;
 }
-/* description tabs */
 
+/* description tabs */

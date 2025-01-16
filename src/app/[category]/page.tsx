@@ -5,6 +5,7 @@ import ProductList from "@/components/product/product.list"
 import Filter from "./components/filter"
 import ProductSlider from "@/components/product/product.list.slider"
 import PaginationGlobal from "@/components/pagination.global"
+import Image from "next/image"
 
 const Products = () => {
     const sortList = [
@@ -36,7 +37,10 @@ const Products = () => {
                 <span className="font-[500]">/</span>
                 <span className="font-[600]">Electric bikes</span>
             </div>
-            <div className="py-12">
+            <Link href={"#"}>
+                <Image src="/slide_product_2_img_1_img.webp" alt="" width={100000} height={100000} className="w-full h-auto pt-8 hover:scale-95 duration-300" />
+            </Link>
+            <div className="py-10">
                 <Coupons />
             </div>
             <main className="mb-28">

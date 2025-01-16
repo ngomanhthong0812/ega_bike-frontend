@@ -30,7 +30,7 @@ const ProductBenefits = () => {
                     </div>
                 ))}
             </div>
-            <Link href="/"><Image src="/Ảnh Xe đạp Màu trắng Sở thích Đồ họa Blog.png" alt="" className="w-full h-auto object-cover rounded-md"
+            <Link href="/"><Image src="/banner-product-detail.png" alt="" className="w-full h-auto object-cover rounded-md"
                 width={100000} height={100000}
             /></Link>
         </div>
