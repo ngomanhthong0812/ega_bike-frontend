@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 const Register = () => {
     return (
         <div className="layout-container flex items-center justify-center !pt-10 !pb-20">
@@ -52,6 +54,12 @@ const Register = () => {
                     >
                         Đăng ký
                     </button>
+                    <p className="text-center text-sm text-gray-600">
+                        Bạn đã có tài khoản? Đăng nhập{" "}
+                        <Link href="/login" className="text-primary font-medium hover:underline">
+                            tại đây
+                        </Link>
+                    </p>
                 </form>
             </div>
         </div>

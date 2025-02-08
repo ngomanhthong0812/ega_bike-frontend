@@ -16,12 +16,17 @@ export async function generateStaticParams() {
         "Túi khô XTOURING - Nâu đất"
     ];
     return products.map(product => ({
-        name: product.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[đĐ]/g, 'd').replace(/ /g, '-').replace(/-+/g, '-')
+        product_name: product.toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[đĐ]/g, 'd')
+            .replace(/ /g, '-')
+            .replace(/-+/g, '-')
     }));
 }
 
-export async function getProduct(name: string) {
-    const product = [
+export async function getProduct(product_name: string) {
+    const products = [
         {
             id: 1,
             name: "Túi khô XTOURING - Xám sắt tổ ong",
@@ -54,15 +59,22 @@ export async function getProduct(name: string) {
         }
     ]
 
-    const result = product.find((product: any) => {
-        const normalizedName = product.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[đĐ]/g, 'd').replace(/ /g, '-').replace(/-+/g, '-');
-        return normalizedName === name;
+    const result = products.find((product) => {
+        const normalizedName = product.name.toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[đĐ]/g, 'd')
+            .replace(/ /g, '-')
+            .replace(/-+/g, '-');
+        return normalizedName === product_name;
     });
     return result;
 }
 
-const ProductDetail = async ({ params }: { params: { name: string } }) => {
-    const product = await getProduct(params.name);
+const ProductDetail = async ({ params }: { params: Promise<{ product_name: string }> }) => {
+    const resolvedParams = await params
+    const product = await getProduct(resolvedParams.product_name);
+
     if (!product) {
         notFound()
     }

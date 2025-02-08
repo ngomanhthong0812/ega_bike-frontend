@@ -49,12 +49,16 @@ export function UserSearch({ open, setOpen }: IProps) {
                             <div className="relative account">
                                 <AiOutlineUser size={30} className="text-[#494949] cursor-pointer" />
                                 <div className="account-menu-popup absolute -bottom-16 left-1/2 -translate-x-1/2 bg-[#363636] rounded-md text-white text-sm flex flex-col w-[90px] z-[999]">
-                                    <Link href={'/login'} className="hover:bg-[#666] duration-100 p-2 py-1 rounded-t-md">Đăng nhập</Link>
-                                    <Link href={'/register'} className="hover:bg-[#666] duration-100 p-2 py-1 rounded-b-md">Đăng ký</Link>
+                                    <Link href={'/login'} className="hover:bg-[#666] duration-100 p-2 py-1 rounded-t-md"
+                                        onClick={handleClose}>Đăng nhập</Link>
+                                    <Link href={'/register'} className="hover:bg-[#666] duration-100 p-2 py-1 rounded-b-md"
+                                        onClick={handleClose}>Đăng ký</Link>
                                 </div>
                                 {/* <div className="account-menu-popup absolute -bottom-16 left-1/2 -translate-x-1/2 bg-[#363636] rounded-md text-white text-sm flex flex-col w-[90px] z-[999]">
-                                    <Link href={'/account'} className="hover:bg-[#666] duration-100 p-2 py-1 rounded-t-md">Tài khoản</Link>
-                                    <Link href={'/logout'} className="hover:bg-[#666] duration-100 p-2 py-1 rounded-b-md">Đăng xuất</Link>
+                                    <Link href={'/account'} className="hover:bg-[#666] duration-100 p-2 py-1 rounded-t-md"
+                                    onClick={handleClose}>Tài khoản</Link>
+                                    <Link href={'/logout'} className="hover:bg-[#666] duration-100 p-2 py-1 rounded-b-md"
+                                    onClick={handleClose}>Đăng xuất</Link>
                                 </div> */}
                             </div>
                             <Link href="/cart" className="relative" onClick={handleClose}>

@@ -1,16 +1,22 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
+import { QuickViewModal } from "../modals/quick.view.modal";
+import { AddToCardSuccessModal } from "../modals/add_to_card_success.modal";
 
 interface IProps {
     isQuantitySold?: boolean,
 }
 const ProductCard: React.FC<IProps> = ({ isQuantitySold = true }) => {
+    const [openQuickViewModal, setOpenQuickViewModal] = useState<boolean>(false);
+    const [openAddToCardSuccess, setOpenAddToCardSuccess] = useState(false);
     return (
         <div>
             <div
@@ -32,11 +38,13 @@ const ProductCard: React.FC<IProps> = ({ isQuantitySold = true }) => {
                     />
                 </Link>
                 <div className="option absolute bottom-5 left-1/2 -translate-x-1/2 translate-y-[70px] flex shadow-md shadow-[#e6e6e6] bg-white rounded-md duration-300 group-hover:translate-y-0">
-                    <span className="add-cart p-4 border-r border-[#f4f4f4] hover:bg-[#f4f4f4] cursor-pointer rounded-l-md duration-150">
+                    <span className="add-cart p-4 border-r border-[#f4f4f4] hover:bg-[#f4f4f4] cursor-pointer rounded-l-md duration-150"
+                        onClick={() => setOpenAddToCardSuccess(true)}>
                         <span>Thêm vào giỏ</span>
                         <FiShoppingCart className="fill-black" />
                     </span>
-                    <span className="quick-view p-4 hover:bg-[#f4f4f4] cursor-pointer rounded-r-md duration-150">
+                    <span className="quick-view p-4 hover:bg-[#f4f4f4] cursor-pointer rounded-r-md duration-150"
+                        onClick={() => setOpenQuickViewModal(true)}>
                         <span>Xem nhanh</span>
                         <FaEye />
                     </span>
@@ -93,6 +101,13 @@ const ProductCard: React.FC<IProps> = ({ isQuantitySold = true }) => {
                     </div>
                 }
             </div>
+
+            <AddToCardSuccessModal
+                open={openAddToCardSuccess}
+                setOpen={setOpenAddToCardSuccess} />
+            <QuickViewModal
+                open={openQuickViewModal}
+                setOpen={setOpenQuickViewModal} />
         </div>
     )
 }

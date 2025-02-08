@@ -8,8 +8,9 @@ import '@/app/globals.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import UserHeader from "@/components/layout/user.header";
+import UserHeader from "@/components/layout/header/user.header";
 import UserFooter from "@/components/layout/user.footer";
+import FloatingButtons from "@/components/floating.buttons ";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,6 +43,7 @@ export default function RootLayout({
           transition={Bounce}
         />
         {children}
+        <FloatingButtons />
         <UserFooter />
       </body>
     </html>

@@ -6,8 +6,55 @@ import Filter from "./components/filter"
 import ProductSlider from "@/components/product/product.list.slider"
 import PaginationGlobal from "@/components/pagination.global"
 import Image from "next/image"
+import { notFound } from "next/navigation"
 
-const Products = () => {
+export async function generateStaticParams() {
+    const categories = [
+        "Xe đạp",
+        "Xe đạp trẻ em"
+    ]
+
+    return categories.map(category => ({
+        category_name: category.toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[đĐ]/g, 'd')
+            .replace(/ /g, '-')
+            .replace(/-+/g, '-')
+    }))
+}
+
+export async function getCategory(category_name: string) {
+    const categories = [
+        {
+            id: 1,
+            name: "Xe đạp",
+        },
+        {
+            id: 2,
+            name: "Xe đạp trẻ em",
+        },
+    ]
+
+    const result = categories.find(category => {
+        const normalizedName = category.name.toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[đĐ]/g, 'd').replace(/ /g, '-')
+            .replace(/-+/g, '-');
+        return normalizedName === category_name
+    })
+    return result
+}
+
+const Products = async ({ params }: { params: Promise<{ category_name: string }> }) => {
+    const resolvedParams = await params;
+    const category = await getCategory(resolvedParams.category_name)
+
+    if (!category) {
+        notFound();
+    }
+
     const sortList = [
         {
             value: 'name-asc',
