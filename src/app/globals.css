@@ -106,8 +106,8 @@ body {
 /* menu */
 .menu-item {
   position: relative;
+  z-index: 9999;
 }
-
 
 .menu-item:hover {
   color: var(--primary-color);
@@ -332,7 +332,6 @@ body {
   }
 }
 
-
 .btn-border-effect {
   transition: all 0.3s ease;
 }
@@ -346,7 +345,6 @@ body {
 }
 
 /* product overview */
-
 
 /* product slick */
 .slick-next::before,
@@ -419,3 +417,8 @@ body {
 }
 
 /* description tabs */
+
+nav {
+  position: relative;
+  z-index: 9999;
+}
