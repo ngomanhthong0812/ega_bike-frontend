@@ -69,7 +69,7 @@ export const USER_MENU_NAV = [
         id: uuid(),
         name: 'Flash Sale',
         icon: '',
-        link: '',
+        link: '/flash_sale',
         active: false,
         subMenu: []
     },
@@ -86,6 +86,14 @@ export const USER_MENU_NAV = [
         name: 'Hướng dẫn thiết lập',
         icon: '',
         link: '',
+        active: false,
+        subMenu: []
+    },
+    {
+        id: uuid(),
+        name: 'Tin tức',
+        icon: '',
+        link: '/post',
         active: false,
         subMenu: []
     },

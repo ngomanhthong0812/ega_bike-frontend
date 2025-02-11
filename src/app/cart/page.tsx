@@ -1,12 +1,14 @@
-"use client"
 import { ShippingProgress } from "./components/shipping-progress";
 import { CartItems } from "./components/cart-items";
 import { CartNote } from "./components/cart-note";
 import { PaymentSection } from "./components/payment-section";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { Metadata } from "next";
 
-const ProductSlider = dynamic(() => import("@/components/product/product.list.slider").then(mod => mod.default));
+export const metadata: Metadata = { title: 'Giỏ hàng' }
+
+const ProductListSlider = dynamic(() => import("@/components/product/product.list.slider").then(mod => mod.default));
 
 const Cart = () => {
     return (
@@ -29,7 +31,9 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-            <ProductSlider isButton={false} title="Có thể bạn sẽ thích" />
+            <div className="pt-24">
+                <ProductListSlider isButton={false} title="Có thể bạn sẽ thích" />
+            </div>
         </div>
     );
 }

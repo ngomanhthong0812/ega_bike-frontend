@@ -3,26 +3,11 @@ import Link from "next/link"
 import Coupons from "@/components/coupon/coupons"
 import ProductList from "@/components/product/product.list"
 import Filter from "./components/filter"
-import ProductSlider from "@/components/product/product.list.slider"
+import ProductListSlider from "@/components/product/product.list.slider"
 import PaginationGlobal from "@/components/pagination.global"
 import Image from "next/image"
 import { notFound } from "next/navigation"
-
-export async function generateStaticParams() {
-    const categories = [
-        "Xe đạp",
-        "Xe đạp trẻ em"
-    ]
-
-    return categories.map(category => ({
-        category_name: category.toLowerCase()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .replace(/[đĐ]/g, 'd')
-            .replace(/ /g, '-')
-            .replace(/-+/g, '-')
-    }))
-}
+import BannerBodySale from "@/components/banner/banner.body.sale"
 
 export async function getCategory(category_name: string) {
     const categories = [
@@ -84,9 +69,9 @@ const Products = async ({ params }: { params: Promise<{ category_name: string }>
                 <span className="font-[500]">/</span>
                 <span className="font-[600]">Electric bikes</span>
             </div>
-            <Link href={"#"}>
-                <Image src="/slide_product_2_img_1_img.webp" alt="" width={100000} height={100000} className="w-full h-auto pt-8 hover:scale-95 duration-300" />
-            </Link>
+            <div className="pt-6">
+                <BannerBodySale />
+            </div>
             <div className="py-10">
                 <Coupons />
             </div>
@@ -109,7 +94,9 @@ const Products = async ({ params }: { params: Promise<{ category_name: string }>
                     </div>
                 </div>
                 {/* <PaginationGlobal page={1} totalPage={5} setPage={() => { }} /> */}
-                <ProductSlider isButton={false} title="Sản phẩm đã xem" />
+                <div className="pt-14">
+                    <ProductListSlider isButton={false} title="Sản phẩm đã xem" />
+                </div>
             </main>
         </div>
     )

@@ -22,7 +22,7 @@ export default function Home() {
         <ProductList title="PHỤ KIỆN XE ĐẠP" />
         <ProductInfoOverlay />
         <ProductOverview />
-        <BannerBodySale />
+        <div className="pt-24"><BannerBodySale /></div>
         <ProductList title="PHỤ TÙNG XE ĐẠP" />
         <ThreedList />
       </div>

@@ -2,28 +2,10 @@ import ProductImages from "./components/product.images";
 import ProductInfo from "./components/product.info";
 import Link from "next/link";
 import ProductBenefits from "./components/product.benefits";
-import ProductSlider from "@/components/product/product.list.slider";
+import ProductListSlider from "@/components/product/product.list.slider";
 import DescriptionTabs from "./components/description.tabs";
 import FeedbackForm from "./components/feedback.form";
 import { notFound } from "next/navigation";
-
-export async function generateStaticParams() {
-    const products = [
-        "Túi khô XTOURING - Xám sắt tổ ong",
-        "Túi khô XTOURING - Đen tổ ong",
-        "Túi khô XTOURING - Xanh rêu",
-        "Túi khô XTOURING - Xanh navy",
-        "Túi khô XTOURING - Nâu đất"
-    ];
-    return products.map(product => ({
-        product_name: product.toLowerCase()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .replace(/[đĐ]/g, 'd')
-            .replace(/ /g, '-')
-            .replace(/-+/g, '-')
-    }));
-}
 
 export async function getProduct(product_name: string) {
     const products = [
@@ -78,6 +60,7 @@ const ProductDetail = async ({ params }: { params: Promise<{ product_name: strin
     if (!product) {
         notFound()
     }
+
     return (
         <div className="layout-container !pb-28">
             <div className="flex gap-1 mt-3">
@@ -94,8 +77,12 @@ const ProductDetail = async ({ params }: { params: Promise<{ product_name: strin
             </div>
             <DescriptionTabs />
             <FeedbackForm />
-            <ProductSlider isButton={false} title="Sản phẩm cùng loại" />
-            <ProductSlider isButton={false} title="Sản phẩm đã xem" />
+            <div className="pt-14">
+                <ProductListSlider isButton={false} title="Sản phẩm cùng loại" />
+            </div>
+            <div className="pt-14">
+                <ProductListSlider isButton={false} title="Sản phẩm đã xem" />
+            </div>
         </div>
     )
 }

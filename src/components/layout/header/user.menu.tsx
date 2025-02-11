@@ -24,11 +24,11 @@ const UserMenu = () => {
             });
         };
 
+        checkVisibility();
+
         const observer = new ResizeObserver(() => {
             checkVisibility();
         });
-
-        checkVisibility();
 
         if (menuRef.current) {
             observer.observe(menuRef.current);
@@ -78,8 +78,12 @@ const UserMenu = () => {
                         <li key={item.id} className="py-5 px-4 font-[600] cursor-pointer
                          whitespace-nowrap flex items-center">
                             <div className="group flex items-center gap-2 menu-item">
-                                {item.name}
-                                {item.subMenu.length > 0 && <GrFormDown size={20} />}
+                                <Link href={item.link}>
+                                    {item.name}
+                                </Link>
+                                <Link href={item.link}>
+                                    {item.subMenu.length > 0 && <GrFormDown size={20} />}
+                                </Link>
                                 {item.subMenu.length > 0 && (
                                     <ul className={`absolute flex ${item.subMenu[0]?.subMenu?.length > 0 ? 'flex-row gap-10 sm:flex-wrap lg:flex-wrap xl:flex-nowrap sm:w-[300px] md:w-[300px] lg:w-[800px] xl:w-fit' : 'flex-col w-fit'}
                                  top-[26px] left-1/4 transform -translate-x-1/4 p-2 invisible group-hover:visible bg-white shadow-md`}>

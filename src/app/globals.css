@@ -347,13 +347,27 @@ body {
 /* product overview */
 
 /* product slick */
+.slick-next,
+.slick-prev {
+  z-index: 99;
+}
+
+.slick-next {
+  right: -5px !important;
+}
+
+.slick-prev {
+  left: -20px !important;
+}
+
 .slick-next::before,
 .slick-prev::before {
-  color: rgb(162, 162, 162) !important;
-  font-size: 25px !important;
+  color: rgb(193, 193, 193) !important;
+  font-size: 30px !important;
 }
 
 /* product slick */
+
 
 /* product detail */
 .discount-product-detail-item {

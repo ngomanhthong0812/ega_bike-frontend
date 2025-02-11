@@ -9,7 +9,7 @@ interface IProps {
     isButton?: boolean,
 }
 
-const ProductSlider: React.FC<IProps> = ({ title, isButton = true }) => {
+const ProductListSlider: React.FC<IProps> = ({ title, isButton = true }) => {
     var settings = {
         dots: false,
         infinite: true,
@@ -18,7 +18,7 @@ const ProductSlider: React.FC<IProps> = ({ title, isButton = true }) => {
         slidesToScroll: 2,
     };
     return (
-        <div className="pt-14">
+        <div>
             <div className="flex items-center justify-between mb-5">
                 <div className="uppercase flex text-[28px] font-[600] pb-3 gap-2">
                     {title}
@@ -45,7 +45,7 @@ const ProductSlider: React.FC<IProps> = ({ title, isButton = true }) => {
                     {
                         breakpoint: 1024,
                         settings: {
-                            slidesToShow:3,
+                            slidesToShow: 3,
                             slidesToScroll: 1
                         }
                     },
@@ -71,4 +71,4 @@ const ProductSlider: React.FC<IProps> = ({ title, isButton = true }) => {
     );
 }
 
-export default ProductSlider
+export default ProductListSlider
