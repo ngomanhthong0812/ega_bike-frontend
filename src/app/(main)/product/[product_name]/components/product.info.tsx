@@ -3,8 +3,8 @@ import { useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa"
 import { GrNext } from "react-icons/gr";
 import { IoAddSharp, IoRemoveSharp } from "react-icons/io5";
-import { DiscountsSheet } from "../../../../components/discounts.sheet";
-import { AddToCardSuccessModal } from "../../../../components/modals/add_to_card_success.modal";
+import { DiscountsSheet } from "../../../../../components/discounts.sheet";
+import { AddToCardSuccessModal } from "../../../../../components/modals/add_to_card_success.modal";
 import Image from "next/image";
 
 const ProductInfo = () => {

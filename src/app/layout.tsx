@@ -27,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <UserHeader />
         <NextTopLoader />
         <ToastContainer
           position="top-right"
@@ -44,7 +43,6 @@ export default function RootLayout({
         />
         {children}
         <FloatingButtons />
-        <UserFooter />
       </body>
     </html>
 

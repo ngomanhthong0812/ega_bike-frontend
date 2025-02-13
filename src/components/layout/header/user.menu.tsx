@@ -1,3 +1,4 @@
+import { MENU_HEIGHT } from "@/constants";
 import { USER_MENU_NAV } from "@/constants/user.menu"
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -16,7 +17,7 @@ const UserMenu = () => {
 
             Array.from(children).forEach((child) => {
                 const childRect = (child as HTMLElement).getBoundingClientRect();
-                if (childRect.bottom > 64) {
+                if (childRect.bottom > MENU_HEIGHT) {
                     (child as HTMLElement).style.visibility = "hidden";
                 } else {
                     (child as HTMLElement).style.visibility = "visible";
@@ -41,7 +42,7 @@ const UserMenu = () => {
     useEffect(() => {
         const observer = new ResizeObserver(() => {
             if (menuRef.current) {
-                const col = Math.floor(menuRef.current.offsetHeight / 64) - 1;
+                const col = Math.floor(menuRef.current.offsetHeight / MENU_HEIGHT) - 1;
                 setItemCol(col);
                 setItemCurrent(0);
                 if (col === 0) {
@@ -73,7 +74,7 @@ const UserMenu = () => {
             <div className="max-h-[64px]">
                 <ul className="flex flex-wrap items-center"
                     ref={menuRef}
-                    style={{ transform: `translateY(-${itemCurrent * 64}px)` }}>
+                    style={{ transform: `translateY(-${itemCurrent * MENU_HEIGHT}px)` }}>
                     {USER_MENU_NAV.map(item => (
                         <li key={item.id} className="py-5 px-4 font-[600] cursor-pointer
                          whitespace-nowrap flex items-center">
