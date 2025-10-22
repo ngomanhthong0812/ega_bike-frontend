@@ -23,7 +23,11 @@ const Cart = () => {
                 <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
                     <div className="lg:col-span-2 md:col-span-2">
                         <ShippingProgress />
-                        <CartItems />
+                        <div>
+                            <CartItems />
+                            <CartItems />
+                            <CartItems />
+                        </div>
                         <CartNote />
                     </div>
                     <div className="lg:col-span-1 md:col-span-2">

@@ -7,14 +7,18 @@ import Link from "next/link"
 import { IoAddSharp, IoRemoveSharp } from "react-icons/io5"
 import { FaRegStar, FaStar } from "react-icons/fa"
 import { useState } from "react"
+import useFormatPrice from "@/hooks/useFormatPrice"
 
 interface IProps {
     open: boolean
     setOpen: (open: boolean) => void
+    product: Product
+    url: string
 }
 
-export const QuickViewModal: React.FC<IProps> = ({ open, setOpen }) => {
+export const QuickViewModal: React.FC<IProps> = ({ open, setOpen, product, url }) => {
     const [count, setCount] = useState(1)
+    const { formatPrice } = useFormatPrice()
 
     const handleDecrement = () => {
         if (count > 1) setCount(count - 1);
@@ -31,7 +35,7 @@ export const QuickViewModal: React.FC<IProps> = ({ open, setOpen }) => {
                 <div className="grid grid-cols-2 gap-8">
                     <div className="product-image">
                         <Image
-                            src="https://bizweb.dktcdn.net/thumb/large/100/521/820/products/2-3-4a49ba5f8a06422d9bbd84ec7d4f3a8c-large.jpg"
+                            src={product.product_images[0]?.url || '/placeholder.jpg'}
                             alt=""
                             width={500}
                             height={500}
@@ -40,20 +44,24 @@ export const QuickViewModal: React.FC<IProps> = ({ open, setOpen }) => {
                     </div>
 
                     <div className="product-info">
-                        <h2 className="text-xl font-semibold">Potang xe đạp MTB nhôm ngắn</h2>
+                        <h2 className="text-xl font-semibold">{product.name}</h2>
                         <div className="flex gap-2 text-[15px] mt-2">
-                            <span>Thương hiệu: Khác</span>
-                            <span>Mã sản phẩm: Đang cập nhật</span>
+                            <span>Thương hiệu: {product.brand?.brand_name || 'Đang cập nhật'}</span>
+                            <span>Mã sản phẩm: {product.sku || 'Đang cập nhật'}</span>
                         </div>
                         <div className="text-primary flex gap-1">
-                            <FaStar size={18} />
-                            <FaStar size={18} />
-                            <FaRegStar size={18} />
-                            <FaRegStar size={18} />
-                            <FaRegStar size={18} />
+                            {Array.from({ length: product.rating }).map((_, index) => (
+                                <FaStar key={index} size={18} />
+                            ))}
+                            {Array.from({ length: 5 - product.rating }).map((_, index) => (
+                                <FaRegStar key={index} size={18} />
+                            ))}
                         </div>
-                        <div className="price mt-4">
-                            <span className="text-[#EB3030] font-[600] text-xl">320.000₫</span>
+                        <div className="price mt-4 flex items-center gap-2">
+                            <span className="text-[#EB3030] font-[600] text-xl">{formatPrice(product.discount_price || product.price)}</span>
+                            {product.discount_price &&
+                                <span className="text-[#666666] text-sm line-through">{formatPrice(product.price)}</span>
+                            }
                         </div>
 
                         <div className="mt-4 p-4 border-2 border-dashed">
@@ -76,7 +84,7 @@ export const QuickViewModal: React.FC<IProps> = ({ open, setOpen }) => {
                             </button>
                         </div>
                         <div className="text-end mt-2">
-                            <Link href={"#"} className="text-[13px] text-blue-700">- Xem chi tiết -</Link>
+                            <Link href={url} className="text-[13px] text-blue-700">- Xem chi tiết -</Link>
                         </div>
                     </div>
                 </div>

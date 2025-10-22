@@ -1,7 +1,12 @@
 "use client"
 import { useState } from "react";
-
-const DescriptionTabs = () => {
+import PolicyTabsItem from "./tabs/policy";
+import ReturnPolicyTabsItem from "./tabs/return-policy";
+import DescriptionTabsItem from "./tabs/description";
+interface IProps {
+    description: string;
+}
+const DescriptionTabs: React.FC<IProps> = ({ description }) => {
     const [active, setActive] = useState(0);
     return (
         <div className="mt-10">
@@ -17,18 +22,13 @@ const DescriptionTabs = () => {
                 >Chính sách đổi trả</button>
             </div>
             <div>
-                {active === 0 && <div className="py-10 max-w-[900px] m-auto">
-                    Mô tả sản phẩm - Đang cập nhật.
-                </div>}
-                {active === 1 && <div className="py-10 max-w-[900px] m-auto">
-                    Chính sách giao hàng - Đang cập nhật.
-                </div>}
-                {active === 2 && <div className="py-10 max-w-[900px] m-auto">
-                    Chính sách đổi trả - Đang cập nhật.
-                </div>}
+                {active === 0 && <DescriptionTabsItem description={description} />}
+                {active === 1 && <PolicyTabsItem />}
+                {active === 2 && <ReturnPolicyTabsItem />}
             </div>
         </div>
     )
 }
 
 export default DescriptionTabs;
+

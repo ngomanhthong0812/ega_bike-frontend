@@ -3,7 +3,6 @@ import { CiCoinInsert } from "react-icons/ci";
 import { MdOutlinePayment } from "react-icons/md";
 import Link from "next/link";
 import Image from "next/image";
-import { Fullscreen } from "lucide-react";
 
 const ProductBenefits = () => {
     const benefits = [

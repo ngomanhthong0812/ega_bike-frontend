@@ -8,19 +8,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import Image from "next/image";
 
-function ProductImages() {
+interface IProps {
+    product_images: ProductImage[]
+}
+const ProductImages = ({ product_images }: IProps) => {
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
-
-    const images = [
-        "https://bizweb.dktcdn.net/thumb/1024x1024/100/521/820/products/img-3561-1296x-fef3b91638234f2088f2be987bea88f6-large.jpg?v=1721810970720",
-        "https://bizweb.dktcdn.net/thumb/1024x1024/100/521/820/products/10-1-e3e40a3c3bce4441afc2a1b791712fd8.jpg?v=1721783248057",
-        "https://bizweb.dktcdn.net/thumb/1024x1024/100/521/820/products/10-1-e3e40a3c3bce4441afc2a1b791712fd8.jpg?v=1721783248057",
-        "https://bizweb.dktcdn.net/thumb/1024x1024/100/521/820/products/10-1-e3e40a3c3bce4441afc2a1b791712fd8.jpg?v=1721783248057",
-        "https://bizweb.dktcdn.net/thumb/1024x1024/100/521/820/products/10-1-e3e40a3c3bce4441afc2a1b791712fd8.jpg?v=1721783248057",
-        "https://bizweb.dktcdn.net/thumb/1024x1024/100/521/820/products/10-1-e3e40a3c3bce4441afc2a1b791712fd8.jpg?v=1721783248057",
-        "https://bizweb.dktcdn.net/thumb/1024x1024/100/521/820/products/10-1-e3e40a3c3bce4441afc2a1b791712fd8.jpg?v=1721783248057",
-    ];
 
     return (
         <div className="col-span-2">
@@ -31,9 +24,9 @@ function ProductImages() {
                 className="!m-0 w-[480px]"
                 onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
             >
-                {images.map((image, index) => (
+                {product_images.map((image, index) => (
                     <SwiperSlide key={index}>
-                        <Image src={image} alt="" className="w-full h-full object-cover" width={480} height={480} />
+                        <Image src={image?.url} alt="image" className="w-full h-full object-cover" width={480} height={480} />
                     </SwiperSlide>
                 ))}
             </Swiper>
@@ -46,12 +39,12 @@ function ProductImages() {
                 watchSlidesProgress={true}
                 className="!m-0 !mt-5"
             >
-                {images.map((image, index) => (
+                {product_images.map((image, index) => (
                     <SwiperSlide
                         key={index}
                         className={`!w-[83px] !h-[83px] border p-1 rounded-md ${activeIndex === index ? 'border-primary' : 'border-transparent'}`}
                     >
-                        <Image src={image} alt="" className="w-full h-full object-cover rounded-sm" width={100000} height={100000} />
+                        <Image src={image?.url} alt="image" className="w-full h-full object-cover rounded-sm" width={100000} height={100000} />
                     </SwiperSlide>
                 ))}
             </Swiper>

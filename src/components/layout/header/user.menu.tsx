@@ -70,7 +70,7 @@ const UserMenu = () => {
     }
 
     return (
-        <nav className="flex-1 ml-14 flex items-center justify-between">
+        <nav className="container-menu flex-1 ml-14 flex items-center justify-between">
             <div className="max-h-[64px]">
                 <ul className="flex flex-wrap items-center"
                     ref={menuRef}

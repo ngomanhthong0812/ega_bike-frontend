@@ -3,13 +3,15 @@ import Coupons from "@/components/coupon/coupons";
 import ProductList from "@/components/product/product.list";
 import ProductListSlider from "@/components/product/product.list.slider";
 import ProductSlider from "@/components/product/product.list.slider";
+import { getDiscounts } from "@/services/discount-service";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Flash Sale",
 };
 
-const FlashSale = () => {
+const FlashSale = async () => {
+    const discounts = await getDiscounts(4);
     return (
         <div className="bg-[#fcf4eb] pb-36">
             <div className="layout-container">
@@ -27,15 +29,15 @@ const FlashSale = () => {
                     </div>
                     <div className="mt-8">
                         <div className="bg-white p-2 rounded-xl">
-                            <Coupons />
+                            <Coupons data={discounts} />
                         </div>
                     </div>
                 </div>
                 <div className="bg-white px-5 pt-3 pb-8 rounded-xl mt-24">
-                    <ProductList />
+                    <ProductList products={[]} />
                 </div>
                 <div className="bg-white px-5 pt-3 pb-8 rounded-xl mt-6">
-                    <ProductListSlider title="Sản phẩm đã xem" isButton={false} />
+                    <ProductListSlider title="Sản phẩm đã xem" isButton={false} products={[]} />
                 </div>
             </div>
         </div>

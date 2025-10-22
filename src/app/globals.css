@@ -104,9 +104,12 @@ body {
 }
 
 /* menu */
+.container-menu {
+  z-index: 99;
+}
+
 .menu-item {
   position: relative;
-  z-index: 9999;
 }
 
 .menu-item:hover {
@@ -431,8 +434,3 @@ body {
 }
 
 /* description tabs */
-
-nav {
-  position: relative;
-  z-index: 9999;
-}

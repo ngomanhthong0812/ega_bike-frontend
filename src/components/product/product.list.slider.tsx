@@ -1,5 +1,4 @@
 'use client'
-import Link from "next/link";
 import ProductCard from "./product.card"
 import ButtonSeeMore from "../button/button.see.more";
 import Slider from "react-slick";
@@ -7,9 +6,10 @@ import Slider from "react-slick";
 interface IProps {
     title?: string,
     isButton?: boolean,
+    products: Product[]
 }
 
-const ProductListSlider: React.FC<IProps> = ({ title, isButton = true }) => {
+const ProductListSlider: React.FC<IProps> = ({ title, isButton = true, products }) => {
     var settings = {
         dots: false,
         infinite: true,
@@ -58,14 +58,9 @@ const ProductListSlider: React.FC<IProps> = ({ title, isButton = true }) => {
                     }
                 ]
             }}>
-                <ProductCard isQuantitySold={false} />
-                <ProductCard isQuantitySold={false} />
-                <ProductCard isQuantitySold={false} />
-                <ProductCard isQuantitySold={false} />
-                <ProductCard isQuantitySold={false} />
-                <ProductCard isQuantitySold={false} />
-                <ProductCard isQuantitySold={false} />
-                <ProductCard isQuantitySold={false} />
+                {products.map((product) => (
+                    <ProductCard isQuantitySold={false} product={product} />
+                ))}
             </Slider>
         </div>
     );

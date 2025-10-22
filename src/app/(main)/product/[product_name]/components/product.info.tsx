@@ -1,16 +1,31 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa"
 import { GrNext } from "react-icons/gr";
 import { IoAddSharp, IoRemoveSharp } from "react-icons/io5";
 import { DiscountsSheet } from "../../../../../components/discounts.sheet";
 import { AddToCardSuccessModal } from "../../../../../components/modals/add_to_card_success.modal";
 import Image from "next/image";
+import { getDiscounts } from "@/services/discount-service";
+import useFormatPrice from "@/hooks/useFormatPrice";
 
-const ProductInfo = () => {
+interface IProps {
+    product: Product
+}
+const ProductInfo = ({ product }: IProps) => {
     const [openDiscounts, setOpenDiscounts] = useState(false);
     const [openAddToCardSuccess, setOpenAddToCardSuccess] = useState(false);
     const [count, setCount] = useState(1);
+    const [discounts, setDiscounts] = useState<Discount[]>([]);
+    const { formatPrice } = useFormatPrice();
+
+    useEffect(() => {
+        const fetchDiscounts = async () => {
+            const discounts = await getDiscounts();
+            setDiscounts(discounts);
+        }
+        fetchDiscounts();
+    }, [])
 
     const handleDecrement = () => {
         if (count > 1) {
@@ -22,27 +37,34 @@ const ProductInfo = () => {
     }
     return (
         <div className="col-span-2">
-            <h1 className="font-[600] text-[25px]">Túi khô XTOURING - Xám sắt tổ ong Túi khô XTOURING</h1>
+            <h1 className="font-[600] text-[25px]">{product?.name}</h1>
             <div className="text-primary flex gap-1">
-                <FaStar size={18} />
-                <FaStar size={18} />
-                <FaRegStar size={18} />
-                <FaRegStar size={18} />
-                <FaRegStar size={18} />
+                {Array.from({ length: product?.rating }).map((_, index) => (
+                    <FaStar key={index} size={18} />
+                ))}
+                {Array.from({ length: 5 - product?.rating }).map((_, index) => (
+                    <FaRegStar key={index} size={18} />
+                ))}
             </div>
             <div className="flex gap-2 text-[15px] mt-2">
-                <span>Thương hiệu: EGA Bike</span>
-                <span>Mã sản phẩm: Đang cập nhật</span>
+                <span>Thương hiệu: {product?.brand?.brand_name || 'Đang cập nhật'}</span>
+                <span>Mã sản phẩm: {product?.sku || 'Đang cập nhật'}</span>
             </div>
             <div className="flex flex-col leading-5">
                 <div className="flex items-center gap-2 mt-2">
-                    <span className="text-[#EB3030] font-[600] text-[20px]">26.599.000₫</span>
-                    <div className="flex items-center gap-2">
-                        <span className="text-[#666666] text-[16px] line-through">39.900.000₫</span>
-                        <span className="item-center bg-[#EB3030] text-white p-[6px] py-[3px] text-sm rounded-full">-34%</span>
-                    </div>
+                    <span className="text-[#EB3030] font-[600] text-[20px]">{formatPrice(product?.discount_price || product?.price)}</span>
+                    {product?.discount_price &&
+                        <div className="flex items-center gap-2">
+                            <span className="text-[#666666] text-[16px] line-through">{formatPrice(product?.price)}</span>
+                            <span className="item-center bg-[#EB3030] text-white p-[6px] py-[3px] text-sm rounded-full">
+                                {((product?.price - product?.discount_price) / product?.price * 100).toFixed(0)}%
+                            </span>
+                        </div>
+                    }
                 </div>
-                <div className="text-[15px]">(Tiết kiệm: <span className="text-[#EB3030]">860.000₫</span> )</div>
+                {product?.discount_price &&
+                    <div className="text-[15px]">(Tiết kiệm: <span className="text-[#EB3030]">{formatPrice(product?.price - product?.discount_price)}</span> )</div>
+                }
             </div>
             <div className="endow relative mt-8">
                 <h3 className="flex gap-2 items-center font-[600] text-[15px] text-black uppercase bg-white absolute -top-1 left-4 px-2 -translate-y-1/2">
@@ -58,13 +80,15 @@ const ProductInfo = () => {
             <div className="dicount-product-detail mt-4">
                 <h3 className="font-[600] text-[16px]">Mã giảm giá</h3>
                 <div className="flex items-center gap-2 text-[14px] uppercase mt-[7px] cursor-pointer" onClick={() => setOpenDiscounts(true)}>
-                    <div className="discount-product-detail-item"><span>summer5</span></div>
-                    <div className="discount-product-detail-item"><span>summer5</span></div>
-                    <div className="discount-product-detail-item"><span>summer5</span></div>
-                    <div className="discount-product-detail-item"><span>summer5</span></div>
+                    {discounts.map((discount, index) => (
+                        index < 4 && <div key={discount.discount_id} className="discount-product-detail-item"><span>{discount.code}</span></div>
+                    ))}
                     <GrNext size={17} />
                 </div>
-                <DiscountsSheet open={openDiscounts} setOpen={setOpenDiscounts} />
+                <DiscountsSheet
+                    open={openDiscounts}
+                    setOpen={setOpenDiscounts}
+                    discounts={discounts} />
             </div>
             <div className="mt-7 flex flex-col gap-4">
                 <div className="flex items-center gap-4">

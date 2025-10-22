@@ -9,21 +9,23 @@ import ProductInfoOverlay from "@/components/product/product.info.overlay";
 import ProductList from "@/components/product/product.list";
 import ProductOverview from "@/components/product/product.overview";
 import ThreedList from "@/components/threed.card/threed.list.module";
+import { getDiscounts } from "@/services/discount-service";
 
-export default function Home() {
+export default async function Home() {
+  const discounts: Discount[] = await getDiscounts(4);
   return (
     <main>
       <Banner />
       <div className="layout-container">
         <ProductCategories />
-        <Coupons />
+        <Coupons data={discounts} />
         <ProductDiscountList />
         <BannerBody />
-        <ProductList title="PHỤ KIỆN XE ĐẠP" />
-        <ProductInfoOverlay />
-        <ProductOverview />
+        {/* <ProductList title="PHỤ KIỆN XE ĐẠP" /> */}
+        {/* <ProductInfoOverlay /> */}
+        {/* <ProductOverview /> */}
         <div className="pt-24"><BannerBodySale /></div>
-        <ProductList title="PHỤ TÙNG XE ĐẠP" />
+        {/* <ProductList title="PHỤ TÙNG XE ĐẠP" /> */}
         <ThreedList />
       </div>
       <BannerService />

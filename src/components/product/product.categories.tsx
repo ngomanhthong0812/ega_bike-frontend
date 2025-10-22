@@ -1,5 +1,4 @@
 import { getCategories } from "@/services/category-service"
-import { Category } from "@/types"
 import Image from "next/image"
 import Link from "next/link"
 

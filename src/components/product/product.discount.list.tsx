@@ -2,8 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 import ProductCard from "./product.card"
 import ButtonSeeMore from "../button/button.see.more";
+import { getProducts } from "@/services/product-service";
 
-const ProductDiscountList = () => {
+const ProductDiscountList = async () => {
+    const products: Product[] = await getProducts(null);
+    console.log(products);
+
     return (
         <div className="pt-24">
             <div className="flex items-center justify-between">
@@ -19,10 +23,9 @@ const ProductDiscountList = () => {
                 </div>
             </div>
             <div className="grid grid-cols-4 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 py-1">
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
+                {products.map((product) => (
+                    <ProductCard key={product.product_id} product={product} />
+                ))}
             </div>
             <div className="mt-10">
                 <ButtonSeeMore title="Xem tất cả" url={"#"} />
